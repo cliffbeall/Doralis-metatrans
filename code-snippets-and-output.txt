@@ -1,0 +1,213 @@
+cd $CLIFF/perio_mt_stuff/ref_genomes/desulfobulbus
+## ipython
+from BCBio import GFF
+from Bio import SeqIO
+
+infile = 'Doralis_final_cleaned.current.gb'
+outfna = 'Doralis_genbank.fna'
+outgff = 'Doralis_genbank.gff'
+
+with open(infile, 'r') as inhandle, \
+     open(outgff, 'w') as gffhandle:
+    recs = SeqIO.parse(inhandle, 'genbank')
+    GFF.write(recs, gffhandle)
+with open(infile, 'r') as inhandle, \
+     open(outfna, 'w') as fnahandle:
+    recs = SeqIO.parse(inhandle, 'genbank')
+    SeqIO.write(recs, fnahandle, 'fasta')
+!bowtie2-build Doralis_genbank.fna Doralis_genbank
+%cd ../..
+!mkdir dsb_align2
+%run run_bowtie_samtools_dsb2.py
+Running Bowtie2 on sample AU_17
+22776371 reads; of these:
+  22776371 (100.00%) were paired; of these:
+    22750462 (99.89%) aligned concordantly 0 times
+    7054 (0.03%) aligned concordantly exactly 1 time
+    18855 (0.08%) aligned concordantly >1 times
+    ----
+    22750462 pairs aligned concordantly 0 times; of these:
+      467 (0.00%) aligned discordantly 1 time
+0.12% overall alignment rate
+Running samtools on sample AU_17
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_01
+21602256 reads; of these:
+  21602256 (100.00%) were paired; of these:
+    21580292 (99.90%) aligned concordantly 0 times
+    1806 (0.01%) aligned concordantly exactly 1 time
+    20158 (0.09%) aligned concordantly >1 times
+    ----
+    21580292 pairs aligned concordantly 0 times; of these:
+      623 (0.00%) aligned discordantly 1 time
+0.10% overall alignment rate
+Running samtools on sample AU_01
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_02
+24344412 reads; of these:
+  24344412 (100.00%) were paired; of these:
+    24045890 (98.77%) aligned concordantly 0 times
+    30245 (0.12%) aligned concordantly exactly 1 time
+    268277 (1.10%) aligned concordantly >1 times
+    ----
+    24045890 pairs aligned concordantly 0 times; of these:
+      560 (0.00%) aligned discordantly 1 time
+1.23% overall alignment rate
+Running samtools on sample AU_02
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_14
+18466796 reads; of these:
+  18466796 (100.00%) were paired; of these:
+    18456070 (99.94%) aligned concordantly 0 times
+    1571 (0.01%) aligned concordantly exactly 1 time
+    9155 (0.05%) aligned concordantly >1 times
+    ----
+    18456070 pairs aligned concordantly 0 times; of these:
+      291 (0.00%) aligned discordantly 1 time
+0.06% overall alignment rate
+Running samtools on sample AU_14
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_13
+25064033 reads; of these:
+  25064033 (100.00%) were paired; of these:
+    25030591 (99.87%) aligned concordantly 0 times
+    5492 (0.02%) aligned concordantly exactly 1 time
+    27950 (0.11%) aligned concordantly >1 times
+    ----
+    25030591 pairs aligned concordantly 0 times; of these:
+      1082 (0.00%) aligned discordantly 1 time
+0.14% overall alignment rate
+Running samtools on sample AU_13
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_05
+26786547 reads; of these:
+  26786547 (100.00%) were paired; of these:
+    26520256 (99.01%) aligned concordantly 0 times
+    28365 (0.11%) aligned concordantly exactly 1 time
+    237926 (0.89%) aligned concordantly >1 times
+    ----
+    26520256 pairs aligned concordantly 0 times; of these:
+      383 (0.00%) aligned discordantly 1 time
+1.00% overall alignment rate
+Running samtools on sample AU_05
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_11
+20756747 reads; of these:
+  20756747 (100.00%) were paired; of these:
+    20744891 (99.94%) aligned concordantly 0 times
+    1430 (0.01%) aligned concordantly exactly 1 time
+    10426 (0.05%) aligned concordantly >1 times
+    ----
+    20744891 pairs aligned concordantly 0 times; of these:
+      371 (0.00%) aligned discordantly 1 time
+0.06% overall alignment rate
+Running samtools on sample AU_11
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_07
+21072489 reads; of these:
+  21072489 (100.00%) were paired; of these:
+    21006128 (99.69%) aligned concordantly 0 times
+    12662 (0.06%) aligned concordantly exactly 1 time
+    53699 (0.25%) aligned concordantly >1 times
+    ----
+    21006128 pairs aligned concordantly 0 times; of these:
+      1850 (0.01%) aligned discordantly 1 time
+0.32% overall alignment rate
+Running samtools on sample AU_07
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_08
+24964280 reads; of these:
+  24964280 (100.00%) were paired; of these:
+    24955100 (99.96%) aligned concordantly 0 times
+    1527 (0.01%) aligned concordantly exactly 1 time
+    7653 (0.03%) aligned concordantly >1 times
+    ----
+    24955100 pairs aligned concordantly 0 times; of these:
+      280 (0.00%) aligned discordantly 1 time
+0.04% overall alignment rate
+Running samtools on sample AU_08
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_09
+18006496 reads; of these:
+  18006496 (100.00%) were paired; of these:
+    18003805 (99.99%) aligned concordantly 0 times
+    430 (0.00%) aligned concordantly exactly 1 time
+    2261 (0.01%) aligned concordantly >1 times
+    ----
+    18003805 pairs aligned concordantly 0 times; of these:
+      115 (0.00%) aligned discordantly 1 time
+0.02% overall alignment rate
+Running samtools on sample AU_09
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_10
+16828979 reads; of these:
+  16828979 (100.00%) were paired; of these:
+    16816557 (99.93%) aligned concordantly 0 times
+    1926 (0.01%) aligned concordantly exactly 1 time
+    10496 (0.06%) aligned concordantly >1 times
+    ----
+    16816557 pairs aligned concordantly 0 times; of these:
+      193 (0.00%) aligned discordantly 1 time
+0.07% overall alignment rate
+Running samtools on sample AU_10
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_15
+19456344 reads; of these:
+  19456344 (100.00%) were paired; of these:
+    19451838 (99.98%) aligned concordantly 0 times
+    613 (0.00%) aligned concordantly exactly 1 time
+    3893 (0.02%) aligned concordantly >1 times
+    ----
+    19451838 pairs aligned concordantly 0 times; of these:
+      105 (0.00%) aligned discordantly 1 time
+0.02% overall alignment rate
+Running samtools on sample AU_15
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_19
+19232658 reads; of these:
+  19232658 (100.00%) were paired; of these:
+    19218101 (99.92%) aligned concordantly 0 times
+    1496 (0.01%) aligned concordantly exactly 1 time
+    13061 (0.07%) aligned concordantly >1 times
+    ----
+    19218101 pairs aligned concordantly 0 times; of these:
+      344 (0.00%) aligned discordantly 1 time
+0.08% overall alignment rate
+Running samtools on sample AU_19
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_18
+19539679 reads; of these:
+  19539679 (100.00%) were paired; of these:
+    19519123 (99.89%) aligned concordantly 0 times
+    1946 (0.01%) aligned concordantly exactly 1 time
+    18610 (0.10%) aligned concordantly >1 times
+    ----
+    19519123 pairs aligned concordantly 0 times; of these:
+      426 (0.00%) aligned discordantly 1 time
+0.11% overall alignment rate
+Running samtools on sample AU_18
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_16
+22433718 reads; of these:
+  22433718 (100.00%) were paired; of these:
+    22422657 (99.95%) aligned concordantly 0 times
+    2947 (0.01%) aligned concordantly exactly 1 time
+    8114 (0.04%) aligned concordantly >1 times
+    ----
+    22422657 pairs aligned concordantly 0 times; of these:
+      511 (0.00%) aligned discordantly 1 time
+0.05% overall alignment rate
+Running samtools on sample AU_16
+[samopen] SAM header is present: 1 sequences.
+Running Bowtie2 on sample AU_12
+11753683 reads; of these:
+  11753683 (100.00%) were paired; of these:
+    11736576 (99.85%) aligned concordantly 0 times
+    2946 (0.03%) aligned concordantly exactly 1 time
+    14161 (0.12%) aligned concordantly >1 times
+    ----
+    11736576 pairs aligned concordantly 0 times; of these:
+      189 (0.00%) aligned discordantly 1 time
+0.15% overall alignment rate
+Running samtools on sample AU_12
+[samopen] SAM header is present: 1 sequences.
